@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StorageServiceImpl implements StorageService {
@@ -14,27 +15,39 @@ public class StorageServiceImpl implements StorageService {
     private StorageDAO storageDAO;
 
     @Override
-    public List<Storage> getAllStorages() {
-        return null;
+    public List<Storage> getAllStorage() {
+        return this.storageDAO.findAll();
     }
 
     @Override
     public Storage getStorageById(int storageID) {
-        return null;
+        Optional<Storage> s = this.storageDAO.findById(storageID);
+        Storage storage = null;
+
+        if(s.isPresent()) {
+            storage = s.get();
+        }
+        else {
+            throw new RuntimeException("Storage not found for: " + storageID);
+        }
+
+        return storage;
+
     }
 
     @Override
     public Storage addStorage(Storage storage) {
-        return null;
+        return this.storageDAO.save(storage);
     }
 
     @Override
     public Storage updateStorage(Storage storage) {
-        return null;
+        return this.storageDAO.save(storage);
     }
 
     @Override
-    public Storage deleteStorage(int storageId) {
-        return null;
+    public String deleteStorage(int storageId) {
+        this.storageDAO.deleteById(storageId);
+        return "Storage item deleted with ID: " + storageId;
     }
 }

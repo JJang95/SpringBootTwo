@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface StorageService {
 
-    List<Storage> getAllStorages();
+    List<Storage> getAllStorage();
     Storage getStorageById(int storageID);
     Storage addStorage(Storage storage);
     Storage updateStorage(Storage storage);
-    Storage deleteStorage(int storageId);
+    String deleteStorage(int storageId);
 }

@@ -39,7 +39,7 @@ public class MyController {
     }
 
     @DeleteMapping("/storage/{storageID}")
-    public String deleteStorage(@PathVariable String storageID) {
+    public Storage deleteStorage(@PathVariable String storageID) {
         return this.storageService.deleteStorage(Integer.parseInt(storageID));
     }
 

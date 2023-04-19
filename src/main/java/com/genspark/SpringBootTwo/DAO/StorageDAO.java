@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StorageDAO extends JpaRepository<Storage, Integer>
+public interface StorageDAO extends JpaRepository<Storage, Integer>{
 }
